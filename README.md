@@ -1,2 +1,2 @@
-# WhatsApp-Chat-Analysis-Analyzer-
-This is the analysis of my chat with friends (In Group).
+# WhatsApp-Chat-Analyzer
+This is the WebApp or can say the Dashboard to analyze your WhatsApp chat either personal with someone or in groups (In Group).
