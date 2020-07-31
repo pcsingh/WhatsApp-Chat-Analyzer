@@ -1,5 +1,7 @@
 # WhatsApp-Chat-Analyzer
 
+<img src="assets/work.gif" width="640" height="328" />
+
 ---
 
 <center><a href="#" target="_blank"><img src="assets/images/image.jpg" height="20%"/></a></center>
