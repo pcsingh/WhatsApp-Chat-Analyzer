@@ -5,5 +5,4 @@ plotly
 wordcloud
 matplotlib
 emoji
-re
-os
+
