@@ -12,10 +12,15 @@ from custom_modules import func_analysis as analysis
 
 # Sidebar and main screen text and title.
 st.title("WhatsApp Chat Analyzer 😃")
-st.markdown("This app is use to analyze your WhatsApp Chat using the exported txt file.")
+st.markdown("This app is use to analyze your WhatsApp Chat using the exported text file 📁.")
 
 st.sidebar.title("Analyze:")
-st.sidebar.markdown("This app is use to analyze your WhatsApp Chat using the exported txt file.")
+st.sidebar.markdown("This app is use to analyze your WhatsApp Chat using the exported text file 📁.")
+
+st.sidebar.markdown('[![Premchandra Singh]\
+                    (https://img.shields.io/badge/Author-@pcsingh-gray.svg?colorA=gray&colorB=dodgerblue&logo=github)]\
+                    (https://github.com/pcsingh/WhatsApp-Chat-Analyzer/)')
+
 st.sidebar.markdown('**How to export chat text file?**')
 st.sidebar.text('Follow the steps 👇:')
 st.sidebar.text('1) Open the individual or group chat.')
@@ -27,7 +32,9 @@ st.sidebar.markdown('*You are all set to go 😃*.')
 
 # Upload feature for txt file {Way 1}
 st.sidebar.markdown('**Upload your chat text file:**')
-filename = st.sidebar.file_uploader("Upload", type=["txt"])
+filename = st.sidebar.file_uploader("", type=["txt"])
+st.sidebar.markdown("**Don't worry your data is not stored!**")
+st.sidebar.markdown("**feel free to use 😊.**")
 
 # =========================================================
 
@@ -145,4 +152,6 @@ if filename is not None:
             
     # --------------------------------------------------
     
+st.sidebar.markdown("[![built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/pcsingh/)")
+st.sidebar.markdown("[![smile please](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://github.com/pcsingh/)")
 
