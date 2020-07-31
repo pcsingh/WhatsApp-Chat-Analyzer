@@ -54,3 +54,44 @@ git add .
 #Commit to the local repo
 git commit -m "<your_commit_message>"
 ```
+
+>CAUTION: Synch up your local repo with [original repo](https://github.com/pcsingh/WhatsApp-Chat-Analyzer) (Upstream) before pushing your commits.
+>This avoids unnecessary conflicts during the merge.
+
+**7.** Push your local commits to the remote repo.
+
+```bash
+git push -u origin <your_branch_name>
+```
+
+**8.** Create a [PR](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) !
+
+**9.** **Congratulations!** Sit and relax, you've made your contribution to [WhatsApp Chat Analyzer](https://whatsapp-chat-analyzer.herokuapp.com/) project.
+
+**NOTE**: **Feel free to [open issues](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/issues/new/choose)**.
+
+
+## Run on Local System
+
+[![Premchandra Singh](https://img.shields.io/badge/Author-@pcsingh-gray.svg?colorA=gray&colorB=dodgerblue&logo=github)](https://github.com/pcsingh/)
+
+- Install packages given in `requirements.txt`.
+
+```bash
+pip install -r requirements.txt
+```
+
+- Run the below command to start your local server.
+
+```bash
+streamlit run app.py
+```
+
+> **_Need help?_** 
+> **_Feel free to contact me @ [premchandra.singh.5268@gmail.com](mailto:premchandra.singh.5268@gmail.com?Subject=WhatsApp_Chat_Analyzer)_**
+
+---
+
+[![built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/pcsingh/) [![smile please](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://github.com/pcsingh/)
+
+
