@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 # word cloud
 from wordcloud import WordCloud, STOPWORDS
 
+
 def authors_name(data):
     """
         It returns the name of participants in chat. 
@@ -183,7 +184,7 @@ def chatter(data):
     auth.reset_index(inplace=True)
     fig = px.bar(auth, y="Author", x="MessageCount", color='Author', orientation="h",
              color_discrete_sequence=["red", "green", "blue", "goldenrod", "magenta"],
-             title="Explicit color sequence"
+             title='Number of messages corresponding to author'
             )
     # fig.show()
     return fig

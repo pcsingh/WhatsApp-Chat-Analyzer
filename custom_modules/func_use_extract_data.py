@@ -1,6 +1,8 @@
 import pandas as pd
 import re
-import func_analysis as analysis
+
+import custom_modules.func_analysis as analysis
+
 
 def startsWithDateTime(s):
     pattern = '^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)(\d{2}|\d{4}), ([0-9])|([0-9]):([0-9][0-9]) '
