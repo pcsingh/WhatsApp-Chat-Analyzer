@@ -1,5 +1,6 @@
 # Libraries Imported
 import streamlit as st
+import os
 
 import func_use_extract_data as func
 import func_analysis as analysis
@@ -21,9 +22,17 @@ st.sidebar.markdown('*You are all set to go 😃*.')
 # -------------------------------------------------
 
 # Upload feature for txt file
+st.sidebar.markdown('**Upload your chat text file:**')
+def file_selector(folder_path='.'):
+    filenames = os.listdir(folder_path)
+    selected_filename = st.sidebar.selectbox('Select a file', filenames)
+    return os.path.join(folder_path, selected_filename)
 
+filename = file_selector()
+st.sidebar.markdown('You selected {}'.format(filename))
 
 # -------------------------------------------------
+
 # Loading files into data as a DataFrame
 filename = ("./Chat.txt")
 
