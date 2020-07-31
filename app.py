@@ -152,6 +152,6 @@ if filename is not None:
             
     # --------------------------------------------------
     
-st.sidebar.markdown("[![built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/pcsingh/)")
-st.sidebar.markdown("[![smile please](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://github.com/pcsingh/)")
+st.sidebar.markdown("[![built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/premchandra-singh/)")
+st.sidebar.markdown("[![smile please](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://www.linkedin.com/in/premchandra-singh/)")
 
