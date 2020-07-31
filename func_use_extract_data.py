@@ -1,4 +1,6 @@
+import pandas as pd
 import re
+import func_analysis as analysis
 
 def startsWithDateTime(s):
     pattern = '^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)(\d{2}|\d{4}), ([0-9])|([0-9]):([0-9][0-9]) '
@@ -82,5 +84,10 @@ def read_data(file_contents):
             messageData.append(message) # Append message
         else:
             messageData.append(line) # If a line doesn't start with a Date Time pattern, then it is part of a multi-line message. So, just append to messageData
-    return data
+    
+    df = pd.DataFrame(data, columns=['Date', 'Time', 'Author', 'Message'])
+    df["Date"] = pd.to_datetime(df["Date"])
+    df['emoji'] = df["Message"].apply(analysis.extract_emojis)
+    
+    return df
 

@@ -1,3 +1,14 @@
+import emoji
+import collections as c
+import pandas as pd
+
+# for visualization
+import plotly.express as px
+import matplotlib.pyplot as plt
+
+# word cloud
+from wordcloud import WordCloud, STOPWORDS
+
 def authors_name(data):
     """
         It returns the name of participants in chat. 
@@ -21,7 +32,7 @@ def stats(data):
     media_messages = data[data['Message'] == '<Media omitted>'].shape[0]
     emojis = sum(data['emoji'].str.len())
     
-    return "Total Messages 💬: {} \nMedia 🎬: {} \nEmoji's 😂: {}".format(total_messages, media_messages, emojis)
+    return "Total Messages 💬: {} \n Total Media 🎬: {} \n Total Emoji's 😂: {}".format(total_messages, media_messages, emojis)
 
 
 def popular_emoji(data):
@@ -42,14 +53,13 @@ def visualize_emoji(data):
     
     fig = px.pie(emoji_df, values='count', names='emoji')
     fig.update_traces(textposition='inside', textinfo='percent+label')
-    fig.show()
-    
-    
+    # fig.show()
+    return fig
+
 def word_cloud(df):
     """
         This function is used to generate word cloud using dataframe.
     """
-    
     df = df[df['Message'] != '<Media omitted>']
     df = df[df['Message'] != 'This message was deleted']
     words = ' '.join(df['Message'])
@@ -57,8 +67,125 @@ def word_cloud(df):
     # To stop article, punctuations
     wordcloud = WordCloud(stopwords=STOPWORDS, background_color='white', height=640, width=800).generate(processed_words)
     
-    plt.figure(figsize=(45,8))
+    # plt.figure(figsize=(45,8))
     plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis('off')
-    plt.show()
+    plt.xticks([])
+    plt.yticks([])
+
+def active_date(data):
+    """
+        This function is used to generate horizontal bar graph between date and 
+        number of messages dataframe.
+    """
+    ax = data['Date'].value_counts().head(10).plot.barh()
+    ax.set_title('Top 10 active date')
+    ax.set_xlabel('Number of Messages')
+    ax.set_ylabel('Date')
+    plt.tight_layout()
+    
+def active_time(data):
+    """
+    This function generate horizontal bar graph between time and number of messages.
+
+    Parameters
+    ----------
+    data : Dataframe
+        With this data graph is generated.
+
+    Returns
+    -------
+    None.
+
+    """
+    ax = data['Time'].value_counts().head(10).plot.barh()
+    ax.set_title('Top 10 active time')
+    ax.set_xlabel('Number of messages')
+    ax.set_ylabel('Time')
+    plt.tight_layout()
+
+def day_wise_count(data):
+    """
+    This function generate a line polar plot.
+
+    Parameters
+    ----------
+    data : DataFrame
+        DESCRIPTION.
+
+    Returns
+    -------
+    fig : TYPE
+        DESCRIPTION.
+
+    """
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    
+    day_df = pd.DataFrame(data["Message"])
+    day_df['day_of_date'] = data['Date'].dt.weekday
+    day_df['day_of_date'] = day_df["day_of_date"].apply(lambda d: days[d])
+    day_df["messagecount"] = 1
+    
+    day = day_df.groupby("day_of_date").sum()
+    day.reset_index(inplace=True)
+    
+    fig = px.line_polar(day, r='messagecount', theta='day_of_date', line_close=True)
+    fig.update_traces(fill='toself')
+    fig.update_layout(
+    polar=dict(
+        radialaxis=dict(
+            visible=True,
+        )),
+    showlegend=False
+    )
+    # fig.show()
+    return fig
+
+def num_messages(data):
+    """
+    This function generates the line plot of number of messages on monthly basis.
+
+    Parameters
+    ----------
+    data : DataFrame
+        DESCRIPTION.
+
+    Returns
+    -------
+    fig : TYPE
+        DESCRIPTION.
+
+    """
+    data['MessageCount'] = 1
+    date_df = data.groupby("Date").sum()
+    date_df.reset_index(inplace=True)
+    fig = px.line(date_df, x="Date", y="MessageCount")
+    fig.update_xaxes(nticks=20)
+    # fig.show()
+    return fig
+
+def chatter(data):
+    """
+    This function generates a bar plot of members involve in a chat corressponding
+    to the number of messages.
+
+    Parameters
+    ----------
+    data : DataFrame
+        DESCRIPTION.
+
+    Returns
+    -------
+    fig : TYPE
+        DESCRIPTION.
+
+    """
+    auth = data.groupby("Author").sum()
+    auth.reset_index(inplace=True)
+    fig = px.bar(auth, y="Author", x="MessageCount", color='Author', orientation="h",
+             color_discrete_sequence=["red", "green", "blue", "goldenrod", "magenta"],
+             title="Explicit color sequence"
+            )
+    # fig.show()
+    return fig
+
 
