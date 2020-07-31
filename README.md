@@ -4,8 +4,53 @@
 
 <center><a href="#" target="_blank"><img src="assets/images/image.jpg" height="20%"/></a></center>
 
-[![GitHub license](https://img.shields.io/github/license/pcsingh/WhatsApp-Chat-Analyzer.svg?logo=github)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/pcsingh/WhatsApp-Chat-Analyzer.svg?logo=github)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/stargazers) [![GitHub forks](https://img.shields.io/github/forks/pcsingh/WhatsApp-Chat-Analyzer.svg?logo=github&color=teal)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/network/members) [![GitHub top language](https://img.shields.io/github/languages/top/pcsingh/WhatsApp-Chat-Analyzer?color=yellow&logo=python)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer) ![GitHub repo size](https://img.shields.io/github/repo-size/pcsingh/WhatsApp-Chat-Analyzer?logo=github)
+[![GitHub license](https://img.shields.io/github/license/pcsingh/WhatsApp-Chat-Analyzer.svg?logo=github)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/pcsingh/WhatsApp-Chat-Analyzer.svg?logo=github)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/stargazers) [![GitHub forks](https://img.shields.io/github/forks/pcsingh/WhatsApp-Chat-Analyzer.svg?logo=github&color=teal)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/network/members) [![GitHub top language](https://img.shields.io/github/languages/top/pcsingh/WhatsApp-Chat-Analyzer?color=yellow&logo=python)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer)
 
 ---
 
-This is the WebApp or can say the Dashboard to analyze your WhatsApp chat either personal with someone or in groups (In Group).
+> **You can view the working project [here](https://whatsapp-chat-analyzer.herokuapp.com/).**
+
+[![WhatsApp Chat Analyzer](https://img.shields.io/badge/WhatsApp_Chat-Analyzer-teal.svg?colorA=teal&colorB=orange&style=for-the-badge)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/) [![IoT](https://img.shields.io/badge/Data-Science-teal.svg?colorA=blue&colorB=red&style=for-the-badge)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/)
+
+WhatsApp chat Analyzer is a WebApp where anyone either tech or non-tech person can analyze their WhatsApp chat data. With this, you can get information such as Which person is active in the chat? Generally, What time the other person is free for conversation? Which one member from the group is more engaged in chat? Which word is most used by a particular member in the group?
+
+And many other insights you can get from this Analyzer. Anyone obviously, who has WhatsApp account can use this WebApp. He/She can export their chat either group or individual in text format (without media) and upload it in the WebApp.
+
+**Important: Don't worry, none of your data is stored.**
+
+## Getting Started
+
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/pcsingh/WhatsApp-Chat-Analyzer?logo=github)](https://whatsapp-chat-analyzer.herokuapp.com/) [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/pcsingh/WhatsApp-Chat-Analyzer?color=bluevoilet&logo=github)](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/commits/) [![GitHub repo size](https://img.shields.io/github/repo-size/pcsingh/WhatsApp-Chat-Analyzer?logo=github)](https://whatsapp-chat-analyzer.herokuapp.com/)
+
+**1.** Fork [this](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/) repository.
+Click on the <a href="https://github.com/pcsingh/WhatsApp-Chat-Analyzer/"><img src="https://img.icons8.com/ios/24/000000/code-fork.png"></a> symbol at the top right corner.
+
+**2.** Clone the forked repository.
+
+```bash
+git clone https://github.com/<your-github-username>/WhatsApp-Chat-Analyzer
+```
+
+**3.** Navigate to the project directory.
+
+```bash
+cd WhatsApp-Chat-Analyzer
+```
+
+**4.** Create a new branch.
+
+```bash
+git checkout -b <your_branch_name>
+```
+
+**5.** Make changes in source code.
+
+**6.** Stage your changes and commit
+
+```bash
+#Add changes to Index
+git add .
+
+#Commit to the local repo
+git commit -m "<your_commit_message>"
+```
