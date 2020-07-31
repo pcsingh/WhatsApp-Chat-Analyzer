@@ -92,6 +92,6 @@ streamlit run app.py
 
 ---
 
-[![built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/pcsingh/) [![smile please](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://github.com/pcsingh/)
+[![built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/premchandra-singh/) [![smile please](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://github.com/pcsingh/)
 
 
