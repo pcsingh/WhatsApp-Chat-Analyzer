@@ -20,6 +20,10 @@ st.sidebar.text('3) Choose export without media.')
 st.sidebar.markdown('*You are all set to go 😃*.')
 # -------------------------------------------------
 
+# Upload feature for txt file
+
+
+# -------------------------------------------------
 # Loading files into data as a DataFrame
 filename = ("./Chat.txt")
 
