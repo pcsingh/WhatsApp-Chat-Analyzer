@@ -77,7 +77,6 @@ def read_data(file_contents):
     
     for line in file_contents:
         line = line.strip() # Guarding against erroneous leading and trailing whitespaces
-
         if startsWithDateTime(line): # If a line starts with a Date Time pattern, then this indicates the beginning of a new message
             if len(messageData) > 0: # Check if the message buffer contains characters from previous iterations
                 data.append([date, time, author, ' '.join(messageData)]) # Save the tokens from the previous message in data

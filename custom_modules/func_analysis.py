@@ -156,7 +156,7 @@ def num_messages(data):
         DESCRIPTION.
 
     """
-    data['MessageCount'] = 1
+    data.loc[:, 'MessageCount'] = 1
     date_df = data.groupby("Date").sum()
     date_df.reset_index(inplace=True)
     fig = px.line(date_df, x="Date", y="MessageCount")

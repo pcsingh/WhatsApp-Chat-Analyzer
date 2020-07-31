@@ -1,6 +1,9 @@
 # Libraries Imported
 import streamlit as st
 import os
+import io
+import csv
+import pandas as pd
 
 from custom_modules import func_use_extract_data as func
 from custom_modules import func_analysis as analysis
@@ -22,32 +25,45 @@ st.sidebar.text('3) Choose export without media.')
 st.sidebar.markdown('*You are all set to go 😃*.')
 # -------------------------------------------------
 
-# Upload feature for txt file
+# Upload feature for txt file {Way 1}
 st.sidebar.markdown('**Upload your chat text file:**')
-def file_selector(folder_path='.'):
-    filenames = os.listdir(folder_path)
-    selected_filename = st.sidebar.selectbox('Select a file', filenames)
-    return os.path.join(folder_path, selected_filename)
+filename = st.sidebar.file_uploader("Upload", type=["txt"])
 
-filename = file_selector()
-st.sidebar.markdown('You selected {}'.format(filename))
+# =========================================================
+
+# Select feature for txt file {Way 2}
+
+# def file_selector(folder_path='.'):
+#     filenames = os.listdir(folder_path)
+#     selected_filename = st.sidebar.selectbox('Select a file', filenames)
+#     return os.path.join(folder_path, selected_filename)
+
+# filename = file_selector()
+# st.sidebar.markdown('You selected {}'.format(filename))
 
 # Check file format
-if not filename.endswith('.txt'):
-    st.markdown("<style>h2{color:red;}</style><b><h2>Please upload only text file!</h2></b>", unsafe_allow_html=True)
-    st.sidebar.markdown("<style>b{color:red;}</style><b>Please upload only text file!</b>", unsafe_allow_html=True)
-    
-else:
-        
-    # -------------------------------------------------
-    
+# if not filename.endswith('.txt'):
+#     st.markdown("<style>h2{color:red;}</style><b><h2>Please upload only text file!</h2></b>", unsafe_allow_html=True)
+#     st.sidebar.markdown("<style>b{color:red;}</style><b>Please upload only text file!</b>", unsafe_allow_html=True)  
+# else:
+
+# ===========================================================
+if filename is not None:
+
     # Loading files into data as a DataFrame
     # filename = ("./Chat.txt")
+    
     @st.cache(persist=True, allow_output_mutation=True)
     def load_data():
-        with open(filename, encoding="utf-8") as f:
-            file_contents = [x.rstrip() for x in f]
+        reader = csv.reader(filename, delimiter='\n')
+        file_contents = []
         
+        for each in reader:
+            if len(each) > 0:
+                file_contents.append(each[0])
+            else:
+                file_contents.append('')
+
         return func.read_data(file_contents)
     
     data = load_data()
@@ -128,5 +144,5 @@ else:
             st.plotly_chart(analysis.num_messages(member_data))
             
     # --------------------------------------------------
-
+    
 
