@@ -53,8 +53,8 @@ st.sidebar.markdown("**feel free to use 😊.**")
 
 # Check file format
 # if not filename.endswith('.txt'):
-#     st.markdown("<style>h2{color:red;}</style><b><h2>Please upload only text file!</h2></b>", unsafe_allow_html=True)
-#     st.sidebar.markdown("<style>b{color:red;}</style><b>Please upload only text file!</b>", unsafe_allow_html=True)  
+#     st.error("Please upload only text file!")
+#     st.sidebar.error("Please upload only text file!")  
 # else:
 
 # ===========================================================
