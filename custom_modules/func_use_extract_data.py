@@ -46,7 +46,10 @@ def getDataPoint(line):
     
     dateTime = splitLine[0] # dateTime = '18/06/17, 22:47'
     
-    date, time = re.split(', | ', dateTime)# date = '18/06/17'; time = '22:47'
+    if ',' not in dateTime:
+        dateTime = dateTime.replace(' ', ', ', 1)
+
+    date, time = dateTime.split(', ')  # date = '18/06/17'; time = '22:47'
     
     message = ' '.join(splitLine[1:]) # message = 'Loki: Why do you have 2 numbers, Banner?'
     
