@@ -75,91 +75,98 @@ if filename is not None:
                 file_contents.append('')
 
         return func.read_data(file_contents)
-    
-    data = load_data()
-    
-    if st.sidebar.checkbox("Show raw data", False):
-        st.write(data)
-    # ------------------------------------------------
-    
-    # Members name involve in Chart
-    st.sidebar.markdown("### To Analyze select")
-    names = analysis.authors_name(data)
-    names.append('All')
-    member = st.sidebar.selectbox("Member Name", names, key='1')
-
-    if not st.sidebar.checkbox("Hide", True):
-        try:
-            if member == "All":
-                st.markdown("### Analyze {} members together:".format(member))
-                st.markdown(analysis.stats(data), unsafe_allow_html=True)
-                
-                st.write("**Top 10 frequent use emoji:**")
-                emoji = analysis.popular_emoji(data)
-                for e in emoji[:10]:
-                    st.markdown('**{}** : {}'.format(e[0], e[1]))
-                
-                st.write('**Visualize emoji distribution in pie chart:**')
-                st.plotly_chart(analysis.visualize_emoji(data))
-                
-                st.write('**Most active date:**')
-                analysis.active_date(data)
-                st.pyplot()
-                
-                st.write('**Most active time for chat:**')
-                analysis.active_time(data)
-                st.pyplot()
-                
-                st.write('**Day wise distribution of messages for {}:**'.format(member))
-                st.plotly_chart(analysis.day_wise_count(data))
-                
-                st.write('**Number of messages as times move on**')
-                st.plotly_chart(analysis.num_messages(data))
-                
-                st.write('**Chatter:**')
-                st.plotly_chart(analysis.chatter(data))
-                
-                st.markdown('**Word Cloud:**')
-                analysis.word_cloud(data)
-                st.pyplot()
-                
-            else:
-                member_data = data[data['Author'] == member]
-                st.markdown("### Analyze {} chat:".format(member))
-                st.markdown(analysis.stats(member_data), unsafe_allow_html=False)
-                
-                st.write("**Top 10 Popular emoji:**")
-                emoji = analysis.popular_emoji(member_data)
-                for e in emoji[:10]:
-                    st.markdown('**{}** : {}'.format(e[0], e[1]))
-                    
-                st.write('**Visualize emoji distribution in pie chart:**')
-                st.plotly_chart(analysis.visualize_emoji(member_data))
-                
-                st.write('**Most active date of {} on WhatsApp:**'.format(member))
-                analysis.active_date(member_data)
-                st.pyplot()
-                
-                st.write('**When {} is active for chat:**'.format(member))
-                analysis.active_time(member_data)
-                st.pyplot()
-                
-                st.write('**Day wise distribution of messages for {}:**'.format(member))
-                st.plotly_chart(analysis.day_wise_count(member_data))
-                
-                st.write('**Number of messages as times move on**')
-                st.plotly_chart(analysis.num_messages(member_data))
-                
-                st.markdown('**Word Cloud:**')
-                analysis.word_cloud(member_data)
-                st.pyplot()
-        except:
-            e = sys.exc_info()[0]
-            print(e)
-            print("It seems that something is wrong! Try Again")
+    try:
+        data = load_data()
+        
+        if data.empty:
+            st.error("Please upload the WhatsApp chat dataset!")
             
-    # --------------------------------------------------
+        if st.sidebar.checkbox("Show raw data", False):
+            st.write(data)
+        # ------------------------------------------------
+        
+        # Members name involve in Chart
+        st.sidebar.markdown("### To Analyze select")
+        names = analysis.authors_name(data)
+        names.append('All')
+        member = st.sidebar.selectbox("Member Name", names, key='1')
     
+        if not st.sidebar.checkbox("Hide", True):
+            try:
+                if member == "All":
+                    st.markdown("### Analyze {} members together:".format(member))
+                    st.markdown(analysis.stats(data), unsafe_allow_html=True)
+                    
+                    st.write("**Top 10 frequent use emoji:**")
+                    emoji = analysis.popular_emoji(data)
+                    for e in emoji[:10]:
+                        st.markdown('**{}** : {}'.format(e[0], e[1]))
+                    
+                    st.write('**Visualize emoji distribution in pie chart:**')
+                    st.plotly_chart(analysis.visualize_emoji(data))
+                    
+                    st.write('**Most active date:**')
+                    analysis.active_date(data)
+                    st.pyplot()
+                    
+                    st.write('**Most active time for chat:**')
+                    analysis.active_time(data)
+                    st.pyplot()
+                    
+                    st.write('**Day wise distribution of messages for {}:**'.format(member))
+                    st.plotly_chart(analysis.day_wise_count(data))
+                    
+                    st.write('**Number of messages as times move on**')
+                    st.plotly_chart(analysis.num_messages(data))
+                    
+                    st.write('**Chatter:**')
+                    st.plotly_chart(analysis.chatter(data))
+                    
+                    st.markdown('**Word Cloud:**')
+                    analysis.word_cloud(data)
+                    st.pyplot()
+                    
+                else:
+                    member_data = data[data['Author'] == member]
+                    st.markdown("### Analyze {} chat:".format(member))
+                    st.markdown(analysis.stats(member_data), unsafe_allow_html=False)
+                    
+                    st.write("**Top 10 Popular emoji:**")
+                    emoji = analysis.popular_emoji(member_data)
+                    for e in emoji[:10]:
+                        st.markdown('**{}** : {}'.format(e[0], e[1]))
+                        
+                    st.write('**Visualize emoji distribution in pie chart:**')
+                    st.plotly_chart(analysis.visualize_emoji(member_data))
+                    
+                    st.write('**Most active date of {} on WhatsApp:**'.format(member))
+                    analysis.active_date(member_data)
+                    st.pyplot()
+                    
+                    st.write('**When {} is active for chat:**'.format(member))
+                    analysis.active_time(member_data)
+                    st.pyplot()
+                    
+                    st.write('**Day wise distribution of messages for {}:**'.format(member))
+                    st.plotly_chart(analysis.day_wise_count(member_data))
+                    
+                    st.write('**Number of messages as times move on**')
+                    st.plotly_chart(analysis.num_messages(member_data))
+                    
+                    st.markdown('**Word Cloud:**')
+                    analysis.word_cloud(member_data)
+                    st.pyplot()
+            except:
+                e = sys.exc_info()[0]
+                st.error("It seems that something is wrong! Try Again. Error Type: {}".format(e.__name__))
+                
+        # --------------------------------------------------
+
+    except:
+        e = sys.exc_info()[0]
+        st.error("Something is wrong in loading the data! Try again. Error Type: {}".format(e.__name__))
+
+
 st.sidebar.markdown("[![built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/premchandra-singh/)")
 st.sidebar.markdown("[![smile please](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://www.linkedin.com/in/premchandra-singh/)")
 
