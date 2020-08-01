@@ -1,6 +1,6 @@
 # Libraries Imported
 import streamlit as st
-import os
+import time
 import io
 import csv
 import sys
@@ -75,6 +75,7 @@ if filename is not None:
                 file_contents.append('')
 
         return func.read_data(file_contents)
+    
     try:
         data = load_data()
         
@@ -108,6 +109,8 @@ if filename is not None:
                     st.write('**Most active date:**')
                     analysis.active_date(data)
                     st.pyplot()
+                    
+                    time.sleep(0.2)
                     
                     st.write('**Most active time for chat:**')
                     analysis.active_time(data)
