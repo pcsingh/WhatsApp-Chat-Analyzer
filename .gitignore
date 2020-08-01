@@ -1,3 +1,6 @@
 Chat.txt
 *.ipynb
 .ipynb_checkpoints
+__pycache__
+custom_modules/__pycache__
+
