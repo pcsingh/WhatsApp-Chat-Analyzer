@@ -5,7 +5,7 @@ import custom_modules.func_analysis as analysis
 
 
 def startsWithDateTime(s):
-    pattern = '^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)(\d{2}|\d{4}), ([0-9])|([0-9]):([0-9][0-9]) '
+    pattern = '^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)(\d{2}|\d{4})(,)? ([0-9])|([0-9]):([0-9][0-9]) '
     result = re.match(pattern, s)
     if result:
         return True
@@ -46,7 +46,10 @@ def getDataPoint(line):
     
     dateTime = splitLine[0] # dateTime = '18/06/17, 22:47'
     
-    date, time = dateTime.split(', ') # date = '18/06/17'; time = '22:47'
+    if ',' not in dateTime:
+        dateTime = dateTime.replace(' ', ', ', 1)
+
+    date, time = dateTime.split(', ')  # date = '18/06/17'; time = '22:47'
     
     message = ' '.join(splitLine[1:]) # message = 'Loki: Why do you have 2 numbers, Banner?'
     
@@ -71,7 +74,7 @@ def read_data(file_contents):
     """
     
     data = [] # List to keep track of data so it can be used by a Pandas dataframe
-    
+
     messageData = [] # to capture intermediate output for multi-line messages
     date, time, author = None, None, None # Intermediate variables to keep track of the current message being processed
     
