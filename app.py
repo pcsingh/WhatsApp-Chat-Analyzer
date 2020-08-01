@@ -146,6 +146,8 @@ if filename is not None:
                     analysis.active_date(member_data)
                     st.pyplot()
                     
+                    time.sleep(0.2)
+                    
                     st.write('**When {} is active for chat:**'.format(member))
                     analysis.active_time(member_data)
                     st.pyplot()
