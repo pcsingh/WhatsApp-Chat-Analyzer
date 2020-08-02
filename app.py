@@ -110,6 +110,8 @@ if filename is not None:
                     analysis.word_cloud(data)
                     st.pyplot()
                     
+                    time.sleep(0.2)
+                    
                     st.write('**Most active date:**')
                     analysis.active_date(data)
                     st.pyplot()
@@ -145,6 +147,8 @@ if filename is not None:
                     st.markdown('**Word Cloud:**')
                     analysis.word_cloud(member_data)
                     st.pyplot()
+                    
+                    time.sleep(0.2)
                     
                     st.write('**Most active date of {} on WhatsApp:**'.format(member))
                     analysis.active_date(member_data)
