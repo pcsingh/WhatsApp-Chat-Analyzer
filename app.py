@@ -106,6 +106,10 @@ if filename is not None:
                     st.write('**Visualize emoji distribution in pie chart:**')
                     st.plotly_chart(analysis.visualize_emoji(data))
                     
+                    st.markdown('**Word Cloud:**')
+                    analysis.word_cloud(data)
+                    st.pyplot()
+                    
                     st.write('**Most active date:**')
                     analysis.active_date(data)
                     st.pyplot()
@@ -125,10 +129,6 @@ if filename is not None:
                     st.write('**Chatter:**')
                     st.plotly_chart(analysis.chatter(data))
                     
-                    st.markdown('**Word Cloud:**')
-                    analysis.word_cloud(data)
-                    st.pyplot()
-                    
                 else:
                     member_data = data[data['Author'] == member]
                     st.markdown("### Analyze {} chat:".format(member))
@@ -141,6 +141,10 @@ if filename is not None:
                         
                     st.write('**Visualize emoji distribution in pie chart:**')
                     st.plotly_chart(analysis.visualize_emoji(member_data))
+                    
+                    st.markdown('**Word Cloud:**')
+                    analysis.word_cloud(member_data)
+                    st.pyplot()
                     
                     st.write('**Most active date of {} on WhatsApp:**'.format(member))
                     analysis.active_date(member_data)
@@ -158,9 +162,6 @@ if filename is not None:
                     st.write('**Number of messages as times move on**')
                     st.plotly_chart(analysis.num_messages(member_data))
                     
-                    st.markdown('**Word Cloud:**')
-                    analysis.word_cloud(member_data)
-                    st.pyplot()
             except:
                 e = sys.exc_info()[0]
                 st.error("It seems that something is wrong! Try Again. Error Type: {}".format(e.__name__))
