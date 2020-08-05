@@ -45,12 +45,15 @@ def getDataPoint(line):
     splitLine = line.split(' - ') # splitLine = ['18/06/17, 22:47', 'Loki: Why do you have 2 numbers, Banner?']
     
     dateTime = splitLine[0] # dateTime = '18/06/17, 22:47'
-    
+
+    date_format = '%m/%d/%Y'
+
     if ',' not in dateTime:
         dateTime = dateTime.replace(' ', ', ', 1)
+        date_format = '%d/%m/%Y'
 
     date, time = dateTime.split(', ')  # date = '18/06/17'; time = '22:47'
-    
+
     message = ' '.join(splitLine[1:]) # message = 'Loki: Why do you have 2 numbers, Banner?'
     
     if startsWithAuthor(message): # True
@@ -59,7 +62,7 @@ def getDataPoint(line):
         message = ' '.join(splitMessage[1:]) # message = 'Why do you have 2 numbers, Banner?'
     else:
         author = None
-    return date, time, author, message
+    return date, time, author, message, date_format
 
 
 def read_data(file_contents):
@@ -84,13 +87,13 @@ def read_data(file_contents):
             if len(messageData) > 0: # Check if the message buffer contains characters from previous iterations
                 data.append([date, time, author, ' '.join(messageData)]) # Save the tokens from the previous message in data
             messageData.clear() # Clear the messageData so that it can be used for the next message
-            date, time, author, message = getDataPoint(line) # Identify and extract tokens from the line
+            date, time, author, message, date_format = getDataPoint(line) # Identify and extract tokens from the line
             messageData.append(message) # Append message
         else:
             messageData.append(line) # If a line doesn't start with a Date Time pattern, then it is part of a multi-line message. So, just append to messageData
     
     df = pd.DataFrame(data, columns=['Date', 'Time', 'Author', 'Message'])
-    df["Date"] = pd.to_datetime(df["Date"])
+    df["Date"] = pd.to_datetime(df["Date"], format=date_format)
     df['emoji'] = df["Message"].apply(analysis.extract_emojis)
     
     return df
