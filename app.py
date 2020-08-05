@@ -40,7 +40,6 @@ date_format = st.sidebar.selectbox('Please select the date format of your file:'
                                   'dd/mm/yyyy', 'dd/mm/yy',
                                   'yyyy/mm/dd', 'yy/mm/dd'))
 filename = st.sidebar.file_uploader("", type=["txt"])
-
 st.sidebar.markdown("**Don't worry your data is not stored!**")
 st.sidebar.markdown("**feel free to use 😊.**")
 
