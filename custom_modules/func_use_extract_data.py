@@ -53,6 +53,9 @@ def getDataPoint(line):
         date_format = '%d/%m/%Y'
 
     date, time = dateTime.split(', ')  # date = '18/06/17'; time = '22:47'
+    
+    if len(date.split('/')[2]) == 2:
+        date_format = date_format.replace('Y', 'y')
 
     message = ' '.join(splitLine[1:]) # message = 'Loki: Why do you have 2 numbers, Banner?'
     
