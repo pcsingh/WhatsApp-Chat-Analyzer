@@ -33,9 +33,14 @@ st.sidebar.text('3) Choose export without media.')
 st.sidebar.markdown('*You are all set to go 😃*.')
 # -------------------------------------------------
 
-# Upload feature for txt file {Way 1}
+# Upload feature for txt file and drop-down menu for date format selection{Way 1}
 st.sidebar.markdown('**Upload your chat text file:**')
+date_format = st.sidebar.selectbox('Please select the date format of your file:',
+                                 ('mm/dd/yyyy', 'mm/dd/yy',
+                                  'dd/mm/yyyy', 'dd/mm/yy',
+                                  'yyyy/mm/dd', 'yy/mm/dd'))
 filename = st.sidebar.file_uploader("", type=["txt"])
+
 st.sidebar.markdown("**Don't worry your data is not stored!**")
 st.sidebar.markdown("**feel free to use 😊.**")
 
@@ -64,7 +69,7 @@ if filename is not None:
     # filename = ("./Chat.txt")
     
     @st.cache(persist=True, allow_output_mutation=True)
-    def load_data():
+    def load_data(date_format=date_format):
         reader = csv.reader(filename, delimiter='\n')
         file_contents = []
         
@@ -74,7 +79,7 @@ if filename is not None:
             else:
                 file_contents.append('')
 
-        return func.read_data(file_contents)
+        return func.read_data(file_contents, date_format)
     
     data = load_data()
     
