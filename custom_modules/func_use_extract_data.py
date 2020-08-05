@@ -46,16 +46,10 @@ def getDataPoint(line):
     
     dateTime = splitLine[0] # dateTime = '18/06/17, 22:47'
 
-    date_format = '%m/%d/%Y'
-
     if ',' not in dateTime:
         dateTime = dateTime.replace(' ', ', ', 1)
-        date_format = '%d/%m/%Y'
 
     date, time = dateTime.split(', ')  # date = '18/06/17'; time = '22:47'
-    
-    if len(date.split('/')[2]) == 2:
-        date_format = date_format.replace('Y', 'y')
 
     message = ' '.join(splitLine[1:]) # message = 'Loki: Why do you have 2 numbers, Banner?'
     
@@ -65,10 +59,10 @@ def getDataPoint(line):
         message = ' '.join(splitMessage[1:]) # message = 'Why do you have 2 numbers, Banner?'
     else:
         author = None
-    return date, time, author, message, date_format
+    return date, time, author, message
 
 
-def read_data(file_contents):
+def read_data(file_contents, date_format):
     """
         This function is use to return the extracted data from txt file.
         
@@ -78,7 +72,11 @@ def read_data(file_contents):
         Returns:
             data -> list of list having elements as date, time, author and message by the user.
     """
-    
+    # Dictionary to assign each date format to the corresponding strftime format
+    date_formats_dict = {'mm/dd/yyyy': '%m/%d/%Y', 'mm/dd/yy': '%m/%d/%y',
+                         'dd/mm/yyyy': '%d/%m/%Y', 'dd/mm/yy': '%d/%m/%y',
+                         'yyyy/mm/dd': '%Y/%m/%d', 'yy/mm/dd': '%y/%m/%d'}
+
     data = [] # List to keep track of data so it can be used by a Pandas dataframe
 
     messageData = [] # to capture intermediate output for multi-line messages
@@ -90,13 +88,13 @@ def read_data(file_contents):
             if len(messageData) > 0: # Check if the message buffer contains characters from previous iterations
                 data.append([date, time, author, ' '.join(messageData)]) # Save the tokens from the previous message in data
             messageData.clear() # Clear the messageData so that it can be used for the next message
-            date, time, author, message, date_format = getDataPoint(line) # Identify and extract tokens from the line
+            date, time, author, message = getDataPoint(line) # Identify and extract tokens from the line
             messageData.append(message) # Append message
         else:
             messageData.append(line) # If a line doesn't start with a Date Time pattern, then it is part of a multi-line message. So, just append to messageData
     
     df = pd.DataFrame(data, columns=['Date', 'Time', 'Author', 'Message'])
-    df["Date"] = pd.to_datetime(df["Date"], format=date_format)
+    df["Date"] = pd.to_datetime(df["Date"], format=date_formats_dict[date_format])
     df['emoji'] = df["Message"].apply(analysis.extract_emojis)
     
     return df
