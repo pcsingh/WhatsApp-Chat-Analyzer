@@ -38,7 +38,7 @@ st.sidebar.markdown('**Upload your chat text file:**')
 date_format = st.sidebar.selectbox('Please select the date format of your file:',
                                  ('mm/dd/yyyy', 'mm/dd/yy',
                                   'dd/mm/yyyy', 'dd/mm/yy',
-                                  'yyyy/mm/dd', 'yy/mm/dd'))
+                                  'yyyy/mm/dd', 'yy/mm/dd'), key='0')
 filename = st.sidebar.file_uploader("", type=["txt"])
 st.sidebar.markdown("**Don't worry your data is not stored!**")
 st.sidebar.markdown("**feel free to use 😊.**")
@@ -178,7 +178,7 @@ if filename is not None:
 
     except:
         e = sys.exc_info()[0]
-        st.error("Something is wrong in loading the data! Try again. Error Type: {}".format(e.__name__))
+        st.error("Something is wrong in loading the data! Please select the correct date format or Try again. Error Type: {}".format(e.__name__))
 
 
 st.sidebar.markdown("[![built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/premchandra-singh/)")
