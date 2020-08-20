@@ -18,6 +18,8 @@ WhatsApp chat Analyzer is a WebApp where anyone either tech or non-tech person c
 
 And many other insights you can get from this Analyzer. Anyone obviously, who has WhatsApp account can use this WebApp. He/She can export their chat either group or individual in text format (without media) and upload it in the WebApp. It can handle both English and Portuguese format of WhatsApp chat.
 
+Check it [here](https://education.github.com/pack/gallery) under Student gallery by GitHub Education.
+
 **Important: Don't worry, none of your data is stored.**
 
 ## Getting Started
