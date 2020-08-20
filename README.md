@@ -18,7 +18,7 @@ WhatsApp chat Analyzer is a WebApp where anyone either tech or non-tech person c
 
 And many other insights you can get from this Analyzer. Anyone obviously, who has WhatsApp account can use this WebApp. He/She can export their chat either group or individual in text format (without media) and upload it in the WebApp. It can handle both English and Portuguese format of WhatsApp chat.
 
-Check it [here](https://education.github.com/pack/gallery) under Student gallery by GitHub Education.
+Check it [here](https://education.github.com/pack/gallery) under Student gallery by GitHub Education :tada:.
 
 **Important: Don't worry, none of your data is stored.**
 
@@ -70,7 +70,7 @@ git push -u origin <your_branch_name>
 
 **8.** Create a [PR](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) !
 
-**9.** **Congratulations!** Sit and relax, you've made your contribution to [WhatsApp Chat Analyzer](https://whatsapp-chat-analyzer.herokuapp.com/) project.
+**9.** **Congratulations!** Sit and relax, you've made your contribution to [WhatsApp Chat Analyzer](https://whatsapp-chat-analyzer.herokuapp.com/).
 
 **NOTE**: **Feel free to [open issues](https://github.com/pcsingh/WhatsApp-Chat-Analyzer/issues/new/choose)**.
 
