@@ -111,6 +111,7 @@ if filename is not None:
                     st.plotly_chart(analysis.visualize_emoji(data))
                     
                     st.markdown('**Word Cloud:**')
+                    st.text("This will show the cloud of words which you use, larger the word size most often you use.")
                     analysis.word_cloud(data)
                     st.pyplot()
                     
@@ -149,6 +150,7 @@ if filename is not None:
                     st.plotly_chart(analysis.visualize_emoji(member_data))
                     
                     st.markdown('**Word Cloud:**')
+                    st.text("This will show the cloud of words which you use, larger the word size most often you use.")
                     analysis.word_cloud(member_data)
                     st.pyplot()
                     
