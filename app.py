@@ -113,20 +113,20 @@ if filename is not None:
                     
                     st.markdown('**Word Cloud:**')
                     st.text("This will show the cloud of words which you use, larger the word size most often you use.")
-                    analysis.word_cloud(data)
-                    st.pyplot()
+                    st.pyplot(analysis.word_cloud(data))
+                    # st.pyplot()
                     
                     time.sleep(0.2)
                     
                     st.write('**Most active date:**')
-                    analysis.active_date(data)
-                    st.pyplot()
+                    st.pyplot(analysis.active_date(data))
+                    # st.pyplot()
                     
                     time.sleep(0.2)
                     
                     st.write('**Most active time for chat:**')
-                    analysis.active_time(data)
-                    st.pyplot()
+                    st.pyplot(analysis.active_time(data))
+                    # st.pyplot()
                     
                     st.write('**Day wise distribution of messages for {}:**'.format(member))
                     st.plotly_chart(analysis.day_wise_count(data))
@@ -152,20 +152,19 @@ if filename is not None:
                     
                     st.markdown('**Word Cloud:**')
                     st.text("This will show the cloud of words which you use, larger the word size most often you use.")
-                    analysis.word_cloud(member_data)
-                    st.pyplot()
+                    st.pyplot(analysis.word_cloud(member_data))  
                     
                     time.sleep(0.2)
                     
                     st.write('**Most active date of {} on WhatsApp:**'.format(member))
-                    analysis.active_date(member_data)
-                    st.pyplot()
+                    st.pyplot(analysis.active_date(member_data))
+                    # st.pyplot()
                     
                     time.sleep(0.2)
                     
                     st.write('**When {} is active for chat:**'.format(member))
-                    analysis.active_time(member_data)
-                    st.pyplot()
+                    st.pyplot(analysis.active_time(member_data))
+                    # st.pyplot()
                     
                     st.write('**Day wise distribution of messages for {}:**'.format(member))
                     st.plotly_chart(analysis.day_wise_count(member_data))
