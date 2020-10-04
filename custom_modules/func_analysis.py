@@ -69,20 +69,25 @@ def word_cloud(df):
     wordcloud = WordCloud(stopwords=STOPWORDS, background_color='white', height=640, width=800).generate(processed_words)
     
     # plt.figure(figsize=(45,8))
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.xticks([])
-    plt.yticks([])
+    fig = plt.figure()
+    ax = fig.subplots()
+    ax.imshow(wordcloud, interpolation='bilinear')
+    ax.axis('off')
+    return fig
+    
 
 def active_date(data):
     """
         This function is used to generate horizontal bar graph between date and 
         number of messages dataframe.
     """
+    fig, ax = plt.subplots()
     ax = data['Date'].value_counts().head(10).plot.barh()
     ax.set_title('Top 10 active date')
     ax.set_xlabel('Number of Messages')
     ax.set_ylabel('Date')
     plt.tight_layout()
+    return fig
     
 def active_time(data):
     """
@@ -98,11 +103,13 @@ def active_time(data):
     None.
 
     """
+    fig, ax = plt.subplots()
     ax = data['Time'].value_counts().head(10).plot.barh()
     ax.set_title('Top 10 active time')
     ax.set_xlabel('Number of messages')
     ax.set_ylabel('Time')
     plt.tight_layout()
+    return fig
 
 def day_wise_count(data):
     """
