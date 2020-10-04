@@ -9,7 +9,7 @@ from custom_modules import func_use_extract_data as func
 from custom_modules import func_analysis as analysis
 
 # to disable warning by file_uploader going to convert into io.TextIOWrapper
-# st.set_option('deprecation.showfileUploaderEncoding', False)
+st.set_option('deprecation.showfileUploaderEncoding', False)
 
 # ------------------------------------------------
 
@@ -69,6 +69,7 @@ if filename is not None:
     
     @st.cache(persist=True, allow_output_mutation=True)
     def load_data(date_format=date_format):
+        
         reader = csv.reader(filename, delimiter='\n')
         file_contents = []
         
