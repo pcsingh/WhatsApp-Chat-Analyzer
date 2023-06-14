@@ -18,7 +18,7 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 st.title("WhatsApp Chat Analyzer 😃")
 st.markdown(
     "This app is use to analyze your WhatsApp Chat using the exported text file 📁.")
-st.sidebar.image("assets\\images\\banner.jpeg",use_column_width=True)
+st.sidebar.image("./assets/images/banner.jpeg",use_column_width=True)
 st.sidebar.title("Analyze:")
 st.sidebar.markdown(
     "This app is use to analyze your WhatsApp Chat using the exported text file 📁.")
