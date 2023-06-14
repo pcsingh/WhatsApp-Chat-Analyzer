@@ -50,6 +50,14 @@ def getDataPoint(line):
         dateTime = dateTime.replace(' ', ', ', 1)
 
     date, time = dateTime.split(', ')  # date = '18/06/17'; time = '22:47'
+    
+    if "am" in time:
+        time = time.replace("am", "") # time = '11:00 am' becomes time = '11:00 '
+    elif "pm" in time:
+        time = time.replace("pm", "") # time = '11:00 pm' becomes time = '11:00 '
+        time = time.split(':') # time = ['11', '00 ']
+        time[0] = str(int(time[0]) + 12) # time = ['23', '00 ']
+        time = ':'.join(time) # time = '23:00 '
 
     message = ' '.join(splitLine[1:]) # message = 'Loki: Why do you have 2 numbers, Banner?'
     
