@@ -19,7 +19,7 @@ And many other insights you can get from this Analyzer. Anyone obviously, who ha
 
 Check it [here](https://education.github.com/pack/gallery) under Student gallery by GitHub Education :tada:.
 
-**Important: Don't worry, none of your data is stored.**
+**Important: Don't worry, none of your data is stored. For testing use the dummy chat.**
 
 ## Getting Started
 
